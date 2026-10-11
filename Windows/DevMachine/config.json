@@ -1,0 +1,46 @@
+{
+    "Windows": {
+        "MinVersion": "10.0.22631",
+        "PowerShell": {
+            "MinVersion": "5.1.22000.2538"
+        },
+        "OptionalFeatures": [
+            "OpenSSH.Client~~~~0.0.1.0",
+            "NetFX3~~~~"
+        ]
+    },
+    "Git": {
+        "User": "alfredoluzon",
+        "UserName": "Alfredo Luzon",
+        "Email": "allfre2luzon@gmail.com",
+        "SourceDir": "source\\repos\\",
+        "ApiVersion": "2022-11-28",
+        "KeysUrl": "https://api.github.com/user/keys",
+        "ReposUrl": "https://api.github.com/orgs/YourOrganization/repos?visibility=all",
+        "Token": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    },
+    "Apps": [
+        "Microsoft.VisualStudio.2022.Community",
+        "Microsoft.SQLServerManagementStudio",
+        "Microsoft.Coreutils",
+        "Docker.DockerDesktop",
+        "ShiningLight.OpenSSL.Dev",
+        "Git.Git",
+        "GoLang.Go",
+        "GnuPG.Gpg4win",
+        "Anthropic.Claude",
+        "Google.Chrome",
+        "Google.GoogleDrive",
+        "SlackTechnologies.Slack",
+        "Microsoft.VisualStudioCode",
+        "Google.Antigravity",
+        "Postman.Postman",
+        "SmartBear.SoapUI",
+        "Amazon.AWSVPNClient",
+        "SUSE.RancherDesktop",
+        "Kubernetes.kind"
+    ],
+    "Auth": {
+        "VPNFile": "xxxxxxxxxxxxxxxxxxxxxx"
+    }
+}
