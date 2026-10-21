@@ -1,0 +1,12 @@
+{
+    "Git": {
+        "User": "alfredoluzon",
+        "UserName": "Alfredo Luzon",
+        "Email": "allfre2luzon@gmail.com",
+        "SourceDir": "source/repos/",
+        "ApiVersion": "2022-11-28",
+        "KeysUrl": "https://api.github.com/user/keys",
+        "ReposUrl": "https://api.github.com/user/repos?visibility=all",
+        "Token": "xxxxxxxxxxxx"
+    }
+}
