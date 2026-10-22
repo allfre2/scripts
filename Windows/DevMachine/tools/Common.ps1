@@ -11,12 +11,12 @@ function Get-Config {
     if (-not $config) {
         $configFile = Join-Path $PSScriptRoot "..\config.json"
         if (Test-Path $configFile) {
-            $config = Get-Content $configFile -Raw | ConvertFrom-Json
+            $script:config = Get-Content $configFile -Raw | ConvertFrom-Json
+            $config = $script:config
+        } else {
+            Write-Error "Config file not found: $configFile"
         }
     }
 
     return $config
 }
-
-Set-Alias -Name Update-Path -Value Update-Path
-Set-Alias -Name Get-Config -Value Get-Config

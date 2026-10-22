@@ -1,3 +1,14 @@
+. "$PSScriptRoot\Common.ps1"
+
+function Get-GithubHeaders {
+    $config = Get-Config
+    return @{
+        Accept                 = "application/vnd.github+json"
+        Authorization          = "Bearer $($config.Git.Token)"
+        "X-GitHub-Api-Version" = $config.Git.ApiVersion
+    }
+}
+
 function Install-GithubKeys {
     $config = Get-Config
 
@@ -32,11 +43,7 @@ function Install-GithubKeys {
 
     ssh-keygen -q -t ed25519 -f $keyFile -N '""'
 
-    $headers = @{
-        Accept                 = "application/vnd.github+json"
-        Authorization          = "Bearer $($config.Git.Token)"
-        "X-GitHub-Api-Version" = $config.Git.ApiVersion
-    }
+    $headers = Get-GithubHeaders
 
     $publicKey = Get-Content "$keyFile.pub" -Raw
 
@@ -65,6 +72,7 @@ function Install-GithubKeys {
 
 function Set-Git {
     $config = Get-Config
+    $keyFile = Join-Path $HOME ".ssh\id_ed25519"
 
     # Configure git, credentials and clone repos
 
@@ -88,6 +96,7 @@ function Set-Git {
 
     Write-Host "Cloning repositories ..."
 
+    $headers = Get-GithubHeaders
     $response = Invoke-RestMethod `
         -Uri $config.Git.ReposUrl `
         -Headers $headers `
@@ -107,5 +116,3 @@ function Initialize-Git {
     Install-GithubKeys
     Set-Git
 }
-
-Set-Alias -Name Initialize-Git -Value Initialize-Git

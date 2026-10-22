@@ -5,8 +5,7 @@
             "MinVersion": "5.1.22000.2538"
         },
         "OptionalFeatures": [
-            "OpenSSH.Client~~~~0.0.1.0",
-            "NetFX3~~~~"
+            "OpenSSH.Client~~~~0.0.1.0"
         ]
     },
     "Git": {
@@ -16,8 +15,8 @@
         "SourceDir": "source\\repos\\",
         "ApiVersion": "2022-11-28",
         "KeysUrl": "https://api.github.com/user/keys",
-        "ReposUrl": "https://api.github.com/orgs/YourOrganization/repos?visibility=all",
-        "Token": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        "ReposUrl": "https://api.github.com/user/repos?visibility=all",
+        "Token": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
     },
     "Apps": [
         "Microsoft.VisualStudio.2022.Community",

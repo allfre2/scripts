@@ -1,4 +1,4 @@
-. ".\Common.ps1"
+. "$PSScriptRoot\Common.ps1"
 
 function Enable-WindowsCapabilities {
     $config = Get-Config
@@ -17,13 +17,13 @@ function Enable-WindowsCapabilities {
 
     Write-Host "Checking required Windows features ..."
 
-    foreach ($feature in $config.Windows.OptionalFeatures) {
+    foreach ($featurePattern in $config.Windows.OptionalFeatures) {
+        $filter = if ($featurePattern.EndsWith("*")) { $featurePattern } else { "$featurePattern*" }
+        $capability = Get-WindowsCapability -Online | Where-Object Name -like $filter
     
-        $feature = Get-WindowsCapability -Online | Where-Object Name -like $feature
-    
-        if ($feature.State -eq "NotPresent") {
-            Write-Host "Enabling feature: $feature ..."
-            Add-WindowsCapability -Online -Name $feature
+        if ($capability -and $capability.State -ne "Installed") {
+            Write-Host "Enabling feature: $($capability.Name) ..."
+            Add-WindowsCapability -Online -Name $capability.Name
         }
     }
 }
@@ -44,5 +44,3 @@ function Install-Apps {
     Update-Path
 }
 
-Set-Alias -Name Enable-WindowsCapabilities -Value Enable-WindowsCapabilities
-Set-Alias -Name Install-Apps -Value Install-Apps
