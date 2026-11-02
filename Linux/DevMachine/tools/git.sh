@@ -35,10 +35,11 @@ install_github_keys() {
     # Generate new ed25519 ssh key without passphrase
     ssh-keygen -q -t ed25519 -f "$key_file" -N ""
 
-    local token api_version keys_url
+    local token api_version keys_url signing_keys_url
     token=$(get_json_val '.Git.Token')
     api_version=$(get_json_val '.Git.ApiVersion')
     keys_url=$(get_json_val '.Git.KeysUrl')
+    signing_keys_url=$(get_json_val '.Git.SigningKeysUrl')
 
     local public_key
     public_key=$(cat "$key_file.pub")
@@ -56,6 +57,14 @@ install_github_keys() {
         "$keys_url" > /dev/null
 
     sleep 2
+
+    # Addd Signing key
+    curl -s -X POST \
+        -H "Accept: application/vnd.github+json" \
+        -H "Authorization: Bearer $token" \
+        -H "X-GitHub-Api-Version: $api_version" \
+        -d "$payload" \
+        "$signing_keys_url" \
 
     ssh-add "$key_file"
     ssh-add -l
