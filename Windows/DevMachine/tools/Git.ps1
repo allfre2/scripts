@@ -62,6 +62,15 @@ function Install-GithubKeys {
 
     Start-Sleep -Seconds 2
 
+    # Addd Signing key to github
+    Invoke-WebRequest `
+        -Method POST `
+        -Uri $config.Git.SigningKeysUrl `
+        -Headers $headers `
+        -Body $body `
+        -ContentType "application/json" `
+        -UseBasicParsing
+
     ssh-add $keyFile
     ssh-add -l
 
