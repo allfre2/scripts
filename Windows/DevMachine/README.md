@@ -8,13 +8,13 @@ Possibly useful for new developers offshore, to quickly setup their development 
 
 ## Configure Github
 
-1. Create a dedicated github account for Better Car People and request access to the organization and repositories corresponding to your role.
+1. Request access to the organization and repositories corresponding to your role.
 
 2. Go to Settings -> Developer Settings -> Personal access tokens -> Classic Tokens
 
 3. Fill out the form. Configure repository full access and GPG and SSH key access.
 
-4. Copy token and paste into DevMachineSetup.json file under Git.PAT and configure other options like username, github user, source directory, vpn file path, etc.
+4. Copy token and paste into config.json file under Git.Token and configure other options like username, github user, source directory, etc.
 
 ### Setup git, ssh keys and a local copy of the repositories
 
@@ -33,26 +33,26 @@ Confirm with:
 To install development tools and applications:
 
 ```powershell
- ./DevMachineSetup.ps1 -apps
+ ./Setup.ps1 -apps
 ```
 
 To setup ssh keys, git and clone repositories:
 
 ```powershell
- ./DevMachineSetup.ps1 -repos
+ ./Setup.ps1 -repos
 ```
 
 ### Update all repos, fetch all branches
 
 ```powershell
- ./UpdateAllRepos.ps1
+ ./UpdateRepos.ps1
 ```
 
 
 ### Apply stashed work
 
 ```powershell
- ./ApplyStashes.ps1
+ ./Stash.ps1 -save|apply
 ```
 
 ## Install Development tools and applications
@@ -66,7 +66,7 @@ Run a powershell console as administrator and allow script execution.
 Install applications.
 
 ```powershell
- ./DevMachineSetup.ps1 -apps
+ ./Setup.ps1 -apps
 ```
 
 The process is not fully automated and might require user intervention at several points.

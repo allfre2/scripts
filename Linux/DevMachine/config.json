@@ -9,5 +9,19 @@
         "SigningKeysUrl": "https://api.github.com/user/ssh_signing_keys",
         "ReposUrl": "https://api.github.com/user/repos?visibility=all",
         "Token": "xxxxxxxxxxxx"
+    },
+    "Linux": {
+        "Tools": {
+            "Apt": [
+                "curl",
+                "golang-"
+            ],
+            "Snap": [
+
+            ],
+            "Links": [
+
+            ]
+        }
     }
 }
